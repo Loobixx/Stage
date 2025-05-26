@@ -18,4 +18,17 @@ public class PagePanel extends JPanel {
         Dimension size = titre.getPreferredSize();
         titre.setBounds((width - size.width) / 2, height / 100 * 5, size.width, size.height);
     }
+
+    public void modeNuitPage(boolean boolModeNuit) {
+        if (!boolModeNuit) {
+            titre.setForeground(Color.WHITE);
+            setBackground(Color.DARK_GRAY);
+            repaint(titre.getBounds());
+        } else {
+            titre.setForeground(new Color(33, 33, 33)); // Gris foncé
+            setBackground(Color.WHITE);
+        }
+    }
+
+
 }
