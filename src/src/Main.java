@@ -1,14 +1,10 @@
-// === MonAppImpression3D.java ===
+package src;// === src.Main.java ===
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.List;
-import java.util.Arrays;
 
-public class MonAppImpression3D extends JFrame {
+public class Main extends JFrame {
     // Dimensions initiales de la fenêtre de l'application
     private int Largeur = 700;
     private int Hauteur = 500;
@@ -17,11 +13,10 @@ public class MonAppImpression3D extends JFrame {
     private int decalage = 1;
     private int posBtnTuto= 0;
     private int posBtnFusion = 0;
-    private int posBtnCura = 0;
 
     // Définitions des couleurs personnalisées utilisées dans l'interface
-    private Color Bleu = (new Color(10,210,210)), BleuGrisClair = (new Color(50,240,240)), Noir = (new Color(0,0,0)), Rouge = (new Color(255,10, 10)), GrisClair = (new Color(220,220,220)), Blanc = (new Color(255,255,255)), BleuClair = new Color(10,240,240);
-    private Color InvertBleu = new Color(58, 77, 160), InvertBleuGrisClair = new Color(75, 97, 193), InvertNoir = new Color(200, 200, 200), InvertRouge = new Color(180, 0, 0), SurvolInvertBleuClair = new Color(70, 82, 96), InvertBlanc = new Color(30, 30, 30), InvertBleuClair = new Color(30, 42, 56);
+    private Color Bleu = (new Color(10,210,210)), BleuGrisClair = (new Color(50,240,240)), Noir = (new Color(0,0,0)), Rouge = (new Color(255,10, 10)), Blanc = (new Color(255,255,255)), BleuClair = new Color(10,240,240);
+    private Color InvertBleu = new Color(58, 77, 160), InvertBleuGrisClair = new Color(75, 97, 193), InvertNoir = new Color(200, 200, 200), SurvolInvertBleuClair = new Color(70, 82, 96), InvertBlanc = new Color(30, 30, 30), InvertBleuClair = new Color(30, 42, 56);
 
 
     // Bouton pour basculer entre agrandi/restauré
@@ -40,15 +35,14 @@ public class MonAppImpression3D extends JFrame {
     // Définition des polices utilisées
     Font TitreBoutonGauche = new Font("Arial", Font.PLAIN, 12);   // Police standard pour le texte
     Font SousTitreBoutonGauche = new Font("Arial", Font.PLAIN, 8);   // Police standard pour le texte
-    Font Titre2 = new Font("Arial", Font.BOLD, 22); // Police en gras pour titres secondaires
 
-    public MonAppImpression3D() {
+    public Main() {
         super("App Impression 3D");                // Titre de la fenêtre
         setUndecorated(true);                        // Retire la décoration native OS
         setVisible(true);                            // Rend la fenêtre visible immédiatement
 
         // Icône de la fenêtre récupérée depuis les ressources
-        Image logo = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/logo.jpg"));
+        Image logo = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/logo/logo.png"));
         setIconImage(logo);
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);     // Ferme l'application au clic sur la croix
@@ -56,7 +50,7 @@ public class MonAppImpression3D extends JFrame {
         setLocationRelativeTo(null);                 // Centre la fenêtre à l'écran
         setLayout(null);                             // Layout absolu pour positionnement manuel
 
-        // Initialisation des objets PagePanel avec leurs actions associées
+        // Initialisation des objets src.PagePanel avec leurs actions associées
         Acceuil = new AccueilPage(
                 "Application d'impression 3D",
                 () -> afficherPage(Fusion),
@@ -336,6 +330,7 @@ public class MonAppImpression3D extends JFrame {
                 Fusion.setBounds(1, 30, Largeur - 2, Hauteur - 31);
                 Cura.setBounds(1, 30, Largeur - 2, Hauteur - 31);
                 Tuto.setBounds(1, 30, Largeur - 2, Hauteur - 31);
+                Tuto.flecheActiveOuNon(flecheActive);
                 if (flecheActive){
                     btnFleche.setBounds(30, Hauteur - 21, 30, 20);
                     btnFleche.setText("<-");
@@ -360,6 +355,7 @@ public class MonAppImpression3D extends JFrame {
         getContentPane().setBackground(Blanc); // Fond général
         activerRedimensionnement(); // Active le redimensionnement manuel par les bords
         // Positionnement initial des composants
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     public void InvertBtnFusion(){
@@ -397,7 +393,6 @@ public class MonAppImpression3D extends JFrame {
         Fusion.setBounds(decalage, 30, Largeur - 2, Hauteur - 31);
         Tuto.setBounds(decalage, 30, Largeur - 2, Hauteur - 31);
         Cura.setBounds(decalage, 30, Largeur - 2, Hauteur - 31);
-        ((FusionPage) Fusion).flecheActiveOuNon(flecheActive);
         if (flecheActive){
             btnFleche.setBounds(decalage - 30, Hauteur-21, 28, 20);
             btnFleche.setText("<-");
@@ -441,10 +436,10 @@ public class MonAppImpression3D extends JFrame {
         btnMenu.setBounds(0, 0, 40, 30);
         barreSuperieure.add(btnMenu);
 
-        btnNuit.addActionListener(e -> ((AccueilPage) Acceuil).modeNuitAcceuil(btnModeNuit));
-        btnNuit.addActionListener(e -> ((FusionPage) Fusion).modeNuitFusion(btnModeNuit));
-        btnNuit.addActionListener(e -> ((TutoPage) Tuto).modeNuitTuto(btnModeNuit));
-        btnNuit.addActionListener(e -> ((CuraPage) Cura).modeNuitCura(btnModeNuit));
+        btnNuit.addActionListener(e -> Acceuil.modeNuitAcceuil(btnModeNuit));
+        btnNuit.addActionListener(e -> Fusion.modeNuitFusion(btnModeNuit));
+        btnNuit.addActionListener(e -> Tuto.modeNuitTuto(btnModeNuit));
+        btnNuit.addActionListener(e -> Cura.modeNuitCura(btnModeNuit));
         btnNuit = creerBouton(btnNuit,
                 Bleu, BleuGrisClair, Blanc,
                 "\uD83C\uDF19", e -> InvertModeNuit(),
@@ -938,6 +933,6 @@ public class MonAppImpression3D extends JFrame {
 
     public static void main(String[] args) {
         // Point d'entrée de l'application Swing
-        SwingUtilities.invokeLater(MonAppImpression3D::new);
+        SwingUtilities.invokeLater(Main::new);
     }
 }

@@ -1,4 +1,4 @@
-// === PagePanel.java ===
+package src;// === src.PagePanel.java ===
 import javax.swing.*;
 import java.awt.*;
 

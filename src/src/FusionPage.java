@@ -1,3 +1,5 @@
+package src;
+
 import javax.swing.*;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.plaf.basic.BasicScrollBarUI;
@@ -12,15 +14,15 @@ import java.net.URL;
 
 
 public class FusionPage extends PagePanel {
-    private Color Bleu = (new Color(10,210,210)), Noir = new Color(0,0,0), BleuFoncé = new Color(7,150,150), White = new Color(255, 255, 255), Rouge = new Color( 255, 100, 100);
-    private Color InvertBleu = (new Color(5,130,130)), InvertNoir = new Color(200, 200, 200), InvertBleuFoncé = new Color(14,200,200), InvertWhite = new Color(33, 33, 33), InvertRouge = new Color(255, 50, 50);
     private JScrollPane scrollInstaller, scrollDecouverte, scrollOutils, scrollApplications, scrollVocabulaire;
+    private JEditorPane textInstaller, text, textOutils, textApplication, textVocabulaire;
     private JTabbedPane onglets;
+    private Color Noir = new Color(0,0,0), White = new Color(255, 255, 255), Rouge = new Color( 255, 100, 100);
+    private Color InvertNoir = new Color(200, 200, 200), InvertWhite = new Color(33, 33, 33);
     private JPanel panelInstaller, panelDecouverte, panelOutils, panelApplication, panelVocabulaire;
-    JButton buttonOutils, buttonSuivant = new JButton("");
-    JLabel labelBoutonOutils, labelOutils;
-    JEditorPane textInstaller, text, textOutils, textApplication, textVocabulaire;
-    private final String htmlInstaller = """
+    private JLabel labelBoutonOutils, labelOutils;
+    private JButton buttonOutils;
+    private String htmlInstaller = """
 <html">
 <head>
   <meta charset="UTF-8">
@@ -30,7 +32,7 @@ public class FusionPage extends PagePanel {
         font-family: Arial, sans-serif;
         font-size: 14px;
         line-height: 1.6;
-        padding: 20px;
+        padding: 10px;
         color: %s;            /* couleur du texte */
         background-color: %s; /* couleur de fond */
     }
@@ -130,7 +132,7 @@ public class FusionPage extends PagePanel {
 <p style="text-align:right; margin-top:30px;">
   <a href="action:termine" style="
     display: inline-block;
-    padding: 10px 22px;
+    padding: 10px;
     font-weight: bold;
     color : 0099ff;
     font-size: 16px;
@@ -148,33 +150,34 @@ public class FusionPage extends PagePanel {
 </html>
 """;
 
-    private final String htmlDecouverte = """
+    private String htmlDecouverte = """
 <html>
   <head>
     <style>
-      body {
-        font-family: Arial;
-        font-size: 13px;
+    body {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
         line-height: 1.6;
         padding: 10px;
-        color: %s;                /* texte */
-        background-color: %s;     /* fond   */
-      }
-      h2 {
+        color: %s;            /* couleur du texte */
+        background-color: %s; /* couleur de fond */
+    }
+    h2 {
         color: #2a7ae2;
-      }
-      h3 {
+    }
+    h3 {
+        margin-top: 30px;
         color: #4a90e2;
-      }
-      p.italic {
-        margin-top: 20px;
-        font-style: italic;
-        color: #666666;
-      }
-      ul {
-        margin-left: 20px;
-      }
-    </style>
+    }
+    img {
+        width: 500px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+    }
+    p {
+        margin-bottom: 10px;
+    }
+  </style>
   </head>
   <body>
 
@@ -235,7 +238,7 @@ public class FusionPage extends PagePanel {
 <p style="text-align:right; margin-top:30px;">
   <a href="action:termine" style="
     display: inline-block;
-    padding: 10px 22px;
+    padding: 10px;
     font-weight: bold;
     font-size: 16px;
     color : 0099ff;
@@ -251,25 +254,40 @@ public class FusionPage extends PagePanel {
 </html>
 """;
 
-    private final String htmlOutils = """
+    private String htmlOutils = """
 <html>
   <head>
     <style>
-      body {
-        font-family: Arial;
-        font-size: 13px;
+    body {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
         line-height: 1.6;
         padding: 10px;
-        color: %s;                /* texte dynamique */
-        background-color: %s;     /* fond dynamique */
-      }
-    </style>
+        color: %s;            /* couleur du texte */
+        background-color: %s; /* couleur de fond */
+    }
+    h2 {
+        color: #2a7ae2;
+    }
+    h3 {
+        margin-top: 30px;
+        color: #4a90e2;
+    }
+    img {
+        width: 500px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+    }
+    p {
+        margin-bottom: 10px;
+    }
+  </style>
   </head>
   <body>
     <p style="text-align:right; margin-top:30px;">
       <a href="action:termine" style="
         display: inline-block;
-        padding: 10px 22px;
+        padding: 10px;
         font-weight: bold;
         font-size: 16px;
         color : 0099ff;
@@ -285,13 +303,13 @@ public class FusionPage extends PagePanel {
 </html>
 """;
 
-    private final String htmlApplication = """
+    private String htmlApplication = """
   <html>
   <head>
     <style>
     body {
-        font-family: Arial;
-        font-size: 13px;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
         line-height: 1.6;
         padding: 10px;
         color: %s;            /* couleur du texte */
@@ -301,15 +319,18 @@ public class FusionPage extends PagePanel {
         color: #2a7ae2;
     }
     h3 {
-        color: #4a90e2;
         margin-top: 30px;
+        color: #4a90e2;
     }
-      p.italic {
-        margin-top: 20px;
-        font-style: italic;
-        color: #666666;
+    img {
+        width: 500px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
     }
-    </style>
+    p {
+        margin-bottom: 10px;
+    }
+  </style>
   </head>
   <body>
 
@@ -361,7 +382,7 @@ public class FusionPage extends PagePanel {
 <p style="text-align:right; margin-top:30px;">
   <a href="action:termine" style="
     display: inline-block;
-    padding: 10px 22px;
+    padding: 10px;
     font-weight: bold;
     font-size: 16px;
     color : 0099ff;
@@ -376,29 +397,34 @@ public class FusionPage extends PagePanel {
   </body>
 </html>
 """;
-    private final String htmlVocabulaire = """
+    private String htmlVocabulaire = """
                 <html>
                   <head>
                     <style>
-                      body {
-                        font-family: Arial;
-                        font-size: 13px;
-                        line-height: 1.6;
-                        padding: 10px;
-                        color: %s;                /* texte */
-                        background-color: %s;     /* fond   */
-                      }
-                      h2 {
-                        color: #2a7ae2;
-                      }
-                      h3 {
-                        color: #4a90e2;
-                        margin-top: 30px;
-                      }
-                      p {
-                        margin: 5px 0 15px 0;
-                      }
-                    </style>
+    body {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.6;
+        padding: 10px;
+        color: %s;            /* couleur du texte */
+        background-color: %s; /* couleur de fond */
+    }
+    h2 {
+        color: #2a7ae2;
+    }
+    h3 {
+        margin-top: 30px;
+        color: #4a90e2;
+    }
+    img {
+        width: 500px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+    }
+    p {
+        margin-bottom: 10px;
+    }
+  </style>
                   </head>
                   <body>
                 
@@ -471,7 +497,7 @@ public class FusionPage extends PagePanel {
                 <p style="text-align:right; margin-top:30px;">
               <a href="action:termine" style="
                 display: inline-block;
-                padding: 10px 22px;
+                padding: 10px;
                 font-weight: bold;
                 font-size: 16px;
                 color : 0099ff;
@@ -487,8 +513,7 @@ public class FusionPage extends PagePanel {
                 </html>
                 """;
 
-    private boolean flecheActive = false;
-    public FusionPage(int width, int height, TutoPage LaPageTuto, MonAppImpression3D LaPageMain) {
+    public FusionPage(int width, int height, TutoPage LaPageTuto, Main LaPageMain) {
         super("");
         setLayout(null);
 
@@ -542,12 +567,12 @@ public class FusionPage extends PagePanel {
 
 // 7. On définit la base (le dossier) où seront résolus tous les src relatifs si l'url est trouver
         URL base = null;
-        try {
-            base = new File("imagesFusion/Install/").toURI().toURL();
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
+        base = getClass().getResource("/imagesFusion/Install/");
+
+        if (base != null) {
+            doc.setBase(base);
         }
-        doc.setBase(base);
+
 
 // 8. On « colle » ce kit et ce document au JEditorPane
         textInstaller.setEditorKit(kit);
@@ -671,49 +696,49 @@ public class FusionPage extends PagePanel {
         panelOutils.add(labelOutils);
 
         // ESQUISSE - Création
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/CreeUneEsquisse.png", "Créer une esquisse", "Démarre une nouvelle esquisse 2D sur une face ou un plan.", x, y, btnSize, "Créer esquisse"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Ligne.png", "Ligne", "Trace une ligne droite dans l’esquisse.", x, y, btnSize, "Ligne"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Rectangle2Point.png", "Rectangle 2 points", "Crée un rectangle défini par deux coins opposés.", x, y, btnSize, "Rectangle"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Rectangle3Point.png", "Rectangle 3 points", "Crée un rectangle en utilisant un angle et un côté.", x, y, btnSize, "Rectangle 3 pts"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/RectangleParLeCentre.png", "Rectangle par centre", "Crée un rectangle depuis le centre vers un coin.", x, y, btnSize, "Rect. centre");
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/CreeUneEsquisse.png", "Créer une esquisse", "Démarre une nouvelle esquisse 2D sur une face ou un plan.", x, y, btnSize, "Créer esquisse"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Ligne.png", "Ligne", "Trace une ligne droite dans l’esquisse.", x, y, btnSize, "Ligne"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Rectangle2Point.png", "Rectangle 2 points", "Crée un rectangle défini par deux coins opposés.", x, y, btnSize, "Rectangle"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Rectangle3Point.png", "Rectangle 3 points", "Crée un rectangle en utilisant un angle et un côté.", x, y, btnSize, "Rectangle 3 pts"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/RectangleParLeCentre.png", "Rectangle par centre", "Crée un rectangle depuis le centre vers un coin.", x, y, btnSize, "Rect. centre");
         x = 50; y += btnSize + 60;
 
         // ESQUISSE - Formes courbes
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Cercle.png", "Cercle centre-rayon", "Crée un cercle défini par un centre et un rayon.", x, y, btnSize, "Cercle"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Cercle2Point.png", "Cercle 2 points", "Crée un cercle à partir de deux points sur son diamètre.", x, y, btnSize, "Cercle 2 pts"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Cercle3Point.png", "Cercle 3 points", "Crée un cercle passant par trois points.", x, y, btnSize, "Cercle 3 pts"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/3PointArc.png", "Arc 3 points", "Crée un arc de cercle en trois points.", x, y, btnSize, "Arc"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Ellipse.png", "Ellipse", "Crée une ellipse par deux axes.", x, y, btnSize, "Ellipse");
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Cercle.png", "Cercle centre-rayon", "Crée un cercle défini par un centre et un rayon.", x, y, btnSize, "Cercle"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Cercle2Point.png", "Cercle 2 points", "Crée un cercle à partir de deux points sur son diamètre.", x, y, btnSize, "Cercle 2 pts"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Cercle3Point.png", "Cercle 3 points", "Crée un cercle passant par trois points.", x, y, btnSize, "Cercle 3 pts"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/3PointArc.png", "Arc 3 points", "Crée un arc de cercle en trois points.", x, y, btnSize, "Arc"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Ellipse.png", "Ellipse", "Crée une ellipse par deux axes.", x, y, btnSize, "Ellipse");
         x = 50; y += btnSize + 60;
 
         // ESQUISSE - Autres formes
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Fit Point Spline.png", "Spline", "Crée une courbe lisse passant par plusieurs points.", x, y, btnSize, "Spline"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Conic Curve.png", "Courbe conique", "Crée une courbe conique définie par points et angles.", x, y, btnSize, "Conique"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Point.png", "Point", "Ajoute un point de construction ou de référence.", x, y, btnSize, "Point"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Texte.png", "Texte", "Insère du texte dans l’esquisse.", x, y, btnSize, "Texte"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Mirror.png", "Symétrie", "Crée une symétrie d’objets esquissés par rapport à une ligne.", x, y, btnSize, "Symétrie");
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Fit Point Spline.png", "Spline", "Crée une courbe lisse passant par plusieurs points.", x, y, btnSize, "Spline"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Conic Curve.png", "Courbe conique", "Crée une courbe conique définie par points et angles.", x, y, btnSize, "Conique"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Point.png", "Point", "Ajoute un point de construction ou de référence.", x, y, btnSize, "Point"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Texte.png", "src.Texte", "Insère du texte dans l’esquisse.", x, y, btnSize, "src.Texte"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Mirror.png", "Symétrie", "Crée une symétrie d’objets esquissés par rapport à une ligne.", x, y, btnSize, "Symétrie");
         x = 50; y += btnSize + 60;
 
         // ESQUISSE - Répétition et cotation
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Circular Pattern.png", "Motif circulaire", "Répète des éléments autour d’un centre.", x, y, btnSize, "Motif circ."); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Rectangular Pattern.png", "Motif rectangulaire", "Répète des éléments en grille.", x, y, btnSize, "Motif rect."); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Cote d'esquisse.png", "Cotation", "Ajoute des dimensions à l’esquisse.", x, y, btnSize, "Cote"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Congé.png", "Congé", "Ajoute un arrondi entre deux lignes.", x, y, btnSize, "Congé"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/HorizontaleVerticale.png", "H/V", "Contraint une ligne à l’horizontale ou verticale.", x, y, btnSize, "H/V");
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Circular Pattern.png", "Motif circulaire", "Répète des éléments autour d’un centre.", x, y, btnSize, "Motif circ."); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Rectangular Pattern.png", "Motif rectangulaire", "Répète des éléments en grille.", x, y, btnSize, "Motif rect."); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Cote d'esquisse.png", "Cotation", "Ajoute des dimensions à l’esquisse.", x, y, btnSize, "Cote"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Congé.png", "Congé", "Ajoute un arrondi entre deux lignes.", x, y, btnSize, "Congé"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/HorizontaleVerticale.png", "H/V", "Contraint une ligne à l’horizontale ou verticale.", x, y, btnSize, "H/V");
         x = 50; y += btnSize + 60;
 
         // CONTRAINTES
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Coïncident.png", "Coïncidence", "Contraint deux entités à se toucher.", x, y, btnSize, "Coïncident"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Tangent.png", "Tangente", "Contraint un cercle ou arc à être tangent à une ligne.", x, y, btnSize, "Tangente"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Egal.png", "Égalité", "Contraint deux longueurs ou rayons à être égaux.", x, y, btnSize, "Égal"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Parallele.png", "Parallèle", "Contraint deux lignes à être parallèles.", x, y, btnSize, "Parallèle"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Perpendiculaire.png", "Perpendiculaire", "Contraint deux lignes à être perpendiculaires.", x, y, btnSize, "Perpendiculaire");
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Coïncident.png", "Coïncidence", "Contraint deux entités à se toucher.", x, y, btnSize, "Coïncident"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Tangent.png", "Tangente", "Contraint un cercle ou arc à être tangent à une ligne.", x, y, btnSize, "Tangente"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Egal.png", "Égalité", "Contraint deux longueurs ou rayons à être égaux.", x, y, btnSize, "Égal"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Parallele.png", "Parallèle", "Contraint deux lignes à être parallèles.", x, y, btnSize, "Parallèle"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Perpendiculaire.png", "Perpendiculaire", "Contraint deux lignes à être perpendiculaires.", x, y, btnSize, "Perpendiculaire");
         x = 50; y += btnSize + 60;
 
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Lock.png", "Fixer", "Verrouille la position d’un objet dans l’espace.", x, y, btnSize, "Fixer"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Milieu.png", "Milieu", "Contraint un point au milieu d’une ligne.", x, y, btnSize, "Milieu"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Inspect.png", "Inspecter", "Analyse les contraintes ou mesures dans l’esquisse.", x, y, btnSize, "Inspecter"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Terminer l'esquisse.png", "Terminer esquisse", "Quitte le mode esquisse et valide les formes.", x, y, btnSize, "Terminer esquisse");
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Lock.png", "Fixer", "Verrouille la position d’un objet dans l’espace.", x, y, btnSize, "Fixer"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Milieu.png", "Milieu", "Contraint un point au milieu d’une ligne.", x, y, btnSize, "Milieu"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Inspect.png", "Inspecter", "Analyse les contraintes ou mesures dans l’esquisse.", x, y, btnSize, "Inspecter"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Terminer l'esquisse.png", "Terminer esquisse", "Quitte le mode esquisse et valide les formes.", x, y, btnSize, "Terminer esquisse");
         x = 50; y += (btnSize + 60) * 1.4;
 
         labelOutils = new JLabel("<html><center>" + "Volumique" + "</center></html>");
@@ -726,30 +751,30 @@ public class FusionPage extends PagePanel {
 
         x = 50; y += 40;
         // FONCTIONS 3D
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Extrusion.png", "Extrusion", "Transforme une esquisse en volume par extrusion.", x, y, btnSize, "Extrusion"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Revolve.png", "Révolution", "Crée un volume en tournant une esquisse autour d’un axe.", x, y, btnSize, "Révolution"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Sweep.png", "Balayage", "Extrude une esquisse le long d’un chemin.", x, y, btnSize, "Balayage"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Loft.png", "Fusion (Loft)", "Crée un volume entre plusieurs profils.", x, y, btnSize, "Loft"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Hole.png", "Trou", "Crée un trou dans un corps 3D.", x, y, btnSize, "Trou");
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Extrusion.png", "Extrusion", "Transforme une esquisse en volume par extrusion.", x, y, btnSize, "Extrusion"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Revolve.png", "Révolution", "Crée un volume en tournant une esquisse autour d’un axe.", x, y, btnSize, "Révolution"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Sweep.png", "Balayage", "Extrude une esquisse le long d’un chemin.", x, y, btnSize, "Balayage"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Loft.png", "Fusion (Loft)", "Crée un volume entre plusieurs profils.", x, y, btnSize, "Loft"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Hole.png", "Trou", "Crée un trou dans un corps 3D.", x, y, btnSize, "Trou");
         x = 50; y += btnSize + 60;
 
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Box.png", "Boîte", "Crée une boîte 3D basique.", x, y, btnSize, "Boîte"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Cylinder.png", "Cylindre", "Crée un cylindre simple.", x, y, btnSize, "Cylindre"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Sphere.png", "Sphère", "Crée une sphère 3D.", x, y, btnSize, "Sphère"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Torus.png", "Tore", "Crée une forme en anneau (tore).", x, y, btnSize, "Tore"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Coil.png", "Ressort (coil)", "Crée un ressort hélicoïdal.", x, y, btnSize, "Ressort");
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Box.png", "Boîte", "Crée une boîte 3D basique.", x, y, btnSize, "Boîte"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Cylinder.png", "Cylindre", "Crée un cylindre simple.", x, y, btnSize, "Cylindre"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Sphere.png", "Sphère", "Crée une sphère 3D.", x, y, btnSize, "Sphère"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Torus.png", "Tore", "Crée une forme en anneau (tore).", x, y, btnSize, "Tore"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Coil.png", "Ressort (coil)", "Crée un ressort hélicoïdal.", x, y, btnSize, "Ressort");
         x = 50; y += btnSize + 60;
 
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Pipe.png", "Tuyau", "Crée une extrusion circulaire le long d’un chemin.", x, y, btnSize, "Tuyau"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/3DRectangularPattern.png", "Motif 3D rect.", "Répète un volume selon une grille 3D.", x, y, btnSize, "Motif 3D rect."); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/3DCircularPattern.png", "Motif 3D circ.", "Répète un volume autour d’un axe.", x, y, btnSize, "Motif 3D circ."); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/3DPatternOnPath.png", "Motif sur chemin", "Répète un volume le long d’un chemin 3D.", x, y, btnSize, "Motif chemin"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/3DMirror.png", "Symétrie 3D", "Crée une symétrie d’un corps 3D.", x, y, btnSize, "Sym. 3D");
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Pipe.png", "Tuyau", "Crée une extrusion circulaire le long d’un chemin.", x, y, btnSize, "Tuyau"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/3DRectangularPattern.png", "Motif 3D rect.", "Répète un volume selon une grille 3D.", x, y, btnSize, "Motif 3D rect."); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/3DCircularPattern.png", "Motif 3D circ.", "Répète un volume autour d’un axe.", x, y, btnSize, "Motif 3D circ."); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/3DPatternOnPath.png", "Motif sur chemin", "Répète un volume le long d’un chemin 3D.", x, y, btnSize, "Motif chemin"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/3DMirror.png", "Symétrie 3D", "Crée une symétrie d’un corps 3D.", x, y, btnSize, "Sym. 3D");
         x = 50; y += btnSize + 60;
 
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/AppuyerTirer.png", "Appuyer/Tirer", "Modifie rapidement la géométrie d’un solide.", x, y, btnSize, "Push/Pull"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Congé3D.png", "Congé 3D", "Arrondit une arête sur un volume 3D.", x, y, btnSize, "Congé 3D"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesFusion/Chanfrain.png", "Chanfrein", "Ajoute un biseau sur une arête 3D.", x, y, btnSize, "Chanfrein");
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/AppuyerTirer.png", "Appuyer/Tirer", "Modifie rapidement la géométrie d’un solide.", x, y, btnSize, "Push/Pull"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Congé3D.png", "Congé 3D", "Arrondit une arête sur un volume 3D.", x, y, btnSize, "Congé 3D"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesFusion/Chanfrain.png", "Chanfrein", "Ajoute un biseau sur une arête 3D.", x, y, btnSize, "Chanfrein");
         x = 50; y += (btnSize);
 
         textOutils = new JEditorPane();
@@ -828,7 +853,7 @@ public class FusionPage extends PagePanel {
         return panelApplication;
     }
 
-    private JPanel createOngletVocabulaire(TutoPage LaPageTuto, MonAppImpression3D LaPageMain) {
+    private JPanel createOngletVocabulaire(TutoPage LaPageTuto, Main LaPageMain) {
         panelVocabulaire = new JPanel(new BorderLayout());
         panelVocabulaire.setBackground(White);
         panelVocabulaire.setBorder(BorderFactory.createLineBorder(White, 2));
@@ -1007,16 +1032,5 @@ public class FusionPage extends PagePanel {
 
 
     }
-
-
-    public void flecheActiveOuNon(boolean flecheActiver){
-        if (flecheActiver){
-            flecheActive = true;
-        }
-        else{
-            flecheActive = false;
-        }
-    }
-
 }
 

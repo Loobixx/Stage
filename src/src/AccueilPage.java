@@ -1,11 +1,11 @@
-// === AccueilPage.java ===
+package src;// === src.AccueilPage.java ===
 import javax.swing.*;
 import java.awt.*;
 
 
 public class AccueilPage extends PagePanel {
-    private Color Bleu = (new Color(10,210,210)), Noir = new Color(0,0,0), BleuFoncé = new Color(7,150,150);
-    private Color InvertBleu = (new Color(58, 77, 160)), InvertNoir = new Color(220,220,220), InvertBleuFoncé = new Color(14,200,200);
+    private Color Bleu = (new Color(10,210,210)), Noir = new Color(0,0,0);
+    private Color InvertBleu = (new Color(58, 77, 160)), InvertNoir = new Color(220,220,220);
     private JButton btnVersFusion, btnVersTuto, btnVersCura;
     private JLabel titreLabel;
 

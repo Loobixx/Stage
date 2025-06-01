@@ -1,3 +1,5 @@
+package src;
+
 public class Texte {
     public static String getTexteHTMLFusion() {
         return """

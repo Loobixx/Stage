@@ -1,3 +1,5 @@
+package src;
+
 import javax.swing.*;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.plaf.basic.BasicScrollBarUI;
@@ -12,8 +14,8 @@ import java.net.URL;
 
 
 public class CuraPage extends PagePanel {
-    private Color Bleu = (new Color(10,210,210)), Noir = new Color(0,0,0), BleuFoncé = new Color(7,150,150), White = new Color(255, 255, 255), Rouge = new Color( 255, 100, 100);
-    private Color InvertBleu = (new Color(5,130,130)), InvertNoir = new Color(200, 200, 200), InvertBleuFoncé = new Color(14,200,200), InvertWhite = new Color(33, 33, 33), InvertRouge = new Color(255, 50, 50);
+    private Color Noir = new Color(0,0,0), White = new Color(255, 255, 255), Rouge = new Color( 255, 100, 100);
+    private Color InvertNoir = new Color(200, 200, 200), InvertWhite = new Color(33, 33, 33);
     private JScrollPane scrollInstaller, scrollDecouverte, scrollOutils, scrollApplications, scrollVocabulaire;
     private JTabbedPane onglets;
     private JPanel panelInstaller, panelDecouverte, panelOutils, panelApplication, panelVocabulaire;
@@ -26,14 +28,14 @@ public class CuraPage extends PagePanel {
 <head>
   <meta charset="UTF-8">
   <title>Tutoriel : Installer Ultimaker Cura</title>
-  <style>
+<style>
     body {
         font-family: Arial, sans-serif;
         font-size: 14px;
         line-height: 1.6;
-        padding: 20px;
-        color: %s;
-        background-color: %s;
+        padding: 10px;
+        color: %s;            /* couleur du texte */
+        background-color: %s; /* couleur de fond */
     }
     h2 {
         color: #2a7ae2;
@@ -94,7 +96,7 @@ public class CuraPage extends PagePanel {
   <p style="text-align:right; margin-top:30px;">
     <a href="action:termine" style="
       display: inline-block;
-      padding: 10px 22px;
+      padding: 10px;
       font-weight: bold;
       color: #0099ff;
       font-size: 16px;
@@ -117,27 +119,27 @@ public class CuraPage extends PagePanel {
 <head>
   <style>
     body {
-      font-family: Arial;
-      font-size: 13px;
-      line-height: 1.6;
-      padding: 10px;
-      color: %s;            /* couleur du texte */
-      background-color: %s; /* couleur de fond */
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.6;
+        padding: 10px;
+        color: %s;            /* couleur du texte */
+        background-color: %s; /* couleur de fond */
     }
     h2 {
-      color: #2a7ae2;
+        color: #2a7ae2;
     }
     h3 {
-      color: #4a90e2;
-      margin-top: 30px;
+        margin-top: 30px;
+        color: #4a90e2;
     }
-    p.italic {
-      margin-top: 20px;
-      font-style: italic;
-      color: #666666;
+    img {
+        width: 500px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
     }
-    ul {
-      margin-left: 20px;
+    p {
+        margin-bottom: 10px;
     }
   </style>
 </head>
@@ -182,7 +184,7 @@ public class CuraPage extends PagePanel {
                 <p style="text-align:right; margin-top:30px;">
               <a href="action:termine" style="
                 display: inline-block;
-                padding: 10px 22px;
+                padding: 10px;
                 font-weight: bold;
                 font-size: 16px;
                 color : 0099ff;
@@ -202,21 +204,36 @@ public class CuraPage extends PagePanel {
 <html>
   <head>
     <style>
-      body {
-        font-family: Arial;
-        font-size: 13px;
+    body {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
         line-height: 1.6;
         padding: 10px;
-        color: %s;                /* texte dynamique */
-        background-color: %s;     /* fond dynamique */
-      }
-    </style>
+        color: %s;            /* couleur du texte */
+        background-color: %s; /* couleur de fond */
+    }
+    h2 {
+        color: #2a7ae2;
+    }
+    h3 {
+        margin-top: 30px;
+        color: #4a90e2;
+    }
+    img {
+        width: 500px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+    }
+    p {
+        margin-bottom: 10px;
+    }
+  </style>
   </head>
   <body>
     <p style="text-align:right; margin-top:30px;">
       <a href="action:termine" style="
         display: inline-block;
-        padding: 10px 22px;
+        padding: 10px;
         font-weight: bold;
         font-size: 16px;
         color : 0099ff;
@@ -237,24 +254,27 @@ public class CuraPage extends PagePanel {
 <head>
   <style>
     body {
-      font-family: Arial;
-      font-size: 13px;
-      line-height: 1.6;
-      padding: 10px;
-      color: %s;
-      background-color: %s;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.6;
+        padding: 10px;
+        color: %s;            /* couleur du texte */
+        background-color: %s; /* couleur de fond */
     }
     h2 {
-      color: #2a7ae2;
+        color: #2a7ae2;
     }
     h3 {
-      color: #4a90e2;
-      margin-top: 30px;
+        margin-top: 30px;
+        color: #4a90e2;
     }
-    p.italic {
-      margin-top: 20px;
-      font-style: italic;
-      color: #666666;
+    img {
+        width: 500px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+    }
+    p {
+        margin-bottom: 10px;
     }
   </style>
 </head>
@@ -310,7 +330,7 @@ public class CuraPage extends PagePanel {
                 <p style="text-align:right; margin-top:30px;">
               <a href="action:termine" style="
                 display: inline-block;
-                padding: 10px 22px;
+                padding: 10px;
                 font-weight: bold;
                 font-size: 16px;
                 color : 0099ff;
@@ -331,25 +351,30 @@ public class CuraPage extends PagePanel {
 <html>
   <head>
     <style>
-      body {
-        font-family: Arial;
-        font-size: 13px;
+    body {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
         line-height: 1.6;
         padding: 10px;
-        color: %s;                /* texte */
-        background-color: %s;     /* fond   */
-      }
-      h2 {
+        color: %s;            /* couleur du texte */
+        background-color: %s; /* couleur de fond */
+    }
+    h2 {
         color: #2a7ae2;
-      }
-      h3 {
-        color: #4a90e2;
+    }
+    h3 {
         margin-top: 30px;
-      }
-      p {
-        margin: 5px 0 15px 0;
-      }
-    </style>
+        color: #4a90e2;
+    }
+    img {
+        width: 500px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+    }
+    p {
+        margin-bottom: 10px;
+    }
+  </style>
   </head>
   <body>
 
@@ -481,12 +506,11 @@ public class CuraPage extends PagePanel {
 
 // 7. On définit la base (le dossier) où seront résolus tous les src relatifs si l'url est trouver
         URL base = null;
-        try {
-            base = new File("imagesCura/").toURI().toURL();
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
+        base = getClass().getResource("/imagesCura/");
+
+        if (base != null) {
+            doc.setBase(base);
         }
-        doc.setBase(base);
 
 // 8. On « colle » ce kit et ce document au JEditorPane
         textInstaller.setEditorKit(kit);
@@ -603,16 +627,16 @@ public class CuraPage extends PagePanel {
 
         int x = 50, y = 40;
         // Ligne 1
-        creerBoutonOutil(modeNuit, panelOutils, "imagesCura/OuvrirFichier.png", "Importer", "Importe un fichier 3D pour le placer sur le plateau virtuel.", x, y, btnSize, "Importer"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesCura/Deplacer.png",       "Positionner", "Permet de déplacer, faire pivoter ou mettre à l’échelle le modèle sur le plateau.", x, y, btnSize, "Positionner"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesCura/ChangerLaTaille.png","Échelle",     "Ajuste la taille du modèle en pourcentage ou valeur absolue.", x, y, btnSize, "Échelle"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesCura/Tourner.png",        "Orientation", "Oriente le modèle selon les axes X, Y et Z pour optimiser l’impression.", x, y, btnSize, "Orientation"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesCura/Miroir.png",         "Dupliquer miroir", "Génère une version miroir du modèle pour imprimer des pièces symétriques.", x, y, btnSize, "Dupliquer miroir");
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesCura/OuvrirFichier.png", "Importer", "Importe un fichier 3D pour le placer sur le plateau virtuel.", x, y, btnSize, "Importer"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesCura/Deplacer.png",       "Positionner", "Permet de déplacer, faire pivoter ou mettre à l’échelle le modèle sur le plateau.", x, y, btnSize, "Positionner"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesCura/ChangerLaTaille.png","Échelle",     "Ajuste la taille du modèle en pourcentage ou valeur absolue.", x, y, btnSize, "Échelle"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesCura/Tourner.png",        "Orientation", "Oriente le modèle selon les axes X, Y et Z pour optimiser l’impression.", x, y, btnSize, "Orientation"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesCura/Miroir.png",         "Dupliquer miroir", "Génère une version miroir du modèle pour imprimer des pièces symétriques.", x, y, btnSize, "Dupliquer miroir");
 
         // Ligne 2
         x = 50; y += btnSize + 60;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesCura/Parametre.png",       "Profil",      "Choisit le profil d’impression (matériau, épaisseur de couche, remplissage).", x, y, btnSize, "Profil"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesCura/CreationSupport.png","Supports",    "Active ou désactive la génération de supports pour les surplombs.", x, y, btnSize, "Supports"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesCura/Parametre.png",       "Profil",      "Choisit le profil d’impression (matériau, épaisseur de couche, remplissage).", x, y, btnSize, "Profil"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesCura/CreationSupport.png","Supports",    "Active ou désactive la génération de supports pour les surplombs.", x, y, btnSize, "Supports"); x += btnSize + spacing;
 
         // Ligne 3
         x = 50; y += btnSize + 60;
@@ -624,26 +648,26 @@ public class CuraPage extends PagePanel {
         panelOutils.add(labelOutils);
 
         x = 50; y += 40;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesCura/Quality.png",            "Hauteur de couche", "Spécifie l’épaisseur de chaque couche : plus fin = plus de détails, plus lent.", x, y, btnSize, "Hauteur de couche"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesCura/Walls.png",              "Parois",            "Détermine le nombre et l’épaisseur des parois du modèle pour la solidité.", x, y, btnSize, "Parois"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesCura/TopBottom.png",          "Dessus/Dessous",     "Ajuste le nombre de couches solides en haut et en bas de l’impression.", x, y, btnSize, "Dessus/Dessous"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesCura/Infill.png",             "Remplissage",       "Définit le pourcentage et le motif de remplissage intérieur du modèle.", x, y, btnSize, "Remplissage"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesCura/Material.png",           "Matériau",          "Choisit le matériau et son diamètre pour optimiser les paramètres d’extrusion.", x, y, btnSize, "Matériau");
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesCura/Quality.png",            "Hauteur de couche", "Spécifie l’épaisseur de chaque couche : plus fin = plus de détails, plus lent.", x, y, btnSize, "Hauteur de couche"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesCura/Walls.png",              "Parois",            "Détermine le nombre et l’épaisseur des parois du modèle pour la solidité.", x, y, btnSize, "Parois"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesCura/TopBottom.png",          "Dessus/Dessous",     "Ajuste le nombre de couches solides en haut et en bas de l’impression.", x, y, btnSize, "Dessus/Dessous"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesCura/Infill.png",             "Remplissage",       "Définit le pourcentage et le motif de remplissage intérieur du modèle.", x, y, btnSize, "Remplissage"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesCura/Material.png",           "Matériau",          "Choisit le matériau et son diamètre pour optimiser les paramètres d’extrusion.", x, y, btnSize, "Matériau");
 
         // Ligne 4
         x = 50; y += btnSize + 60;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesCura/Speed.png",              "Vitesse",           "Modifie la vitesse d’impression : plus rapide = moins précis.", x, y, btnSize, "Vitesse"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesCura/Travel.png",             "Déplacement",       "Ajuste la vitesse des mouvements lorsque la buse ne dépose pas de filament.", x, y, btnSize, "Déplacement"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesCura/Cooling.png",            "Refroidissement",   "Active et règle la vitesse des ventilateurs pour solidifier chaque couche.", x, y, btnSize, "Refroidissement"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesCura/Support.png",            "Adhérence",         "Sélectionne le type d’adhérence au plateau (raft, skirt, brim).", x, y, btnSize, "Adhérence"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesCura/BuildPlateAdhesion.png","Plateau",           "Permet de régler la distance initiale entre la buse et le plateau.", x, y, btnSize, "Plateau");
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesCura/Speed.png",              "Vitesse",           "Modifie la vitesse d’impression : plus rapide = moins précis.", x, y, btnSize, "Vitesse"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesCura/Travel.png",             "Déplacement",       "Ajuste la vitesse des mouvements lorsque la buse ne dépose pas de filament.", x, y, btnSize, "Déplacement"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesCura/Cooling.png",            "Refroidissement",   "Active et règle la vitesse des ventilateurs pour solidifier chaque couche.", x, y, btnSize, "Refroidissement"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesCura/Support.png",            "Adhérence",         "Sélectionne le type d’adhérence au plateau (raft, skirt, brim).", x, y, btnSize, "Adhérence"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesCura/BuildPlateAdhesion.png","Plateau",           "Permet de régler la distance initiale entre la buse et le plateau.", x, y, btnSize, "Plateau");
 
         // Ligne 5
         x = 50; y += btnSize + 60;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesCura/DualExtrusion.png",     "Multi-extrusion",   "Permet d’imprimer en plusieurs matériaux ou couleurs simultanément.", x, y, btnSize, "Multi-extrusion"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesCura/MeshFixes.png",         "Réparations",       "Corrige automatiquement les trous et intersections du modèle.", x, y, btnSize, "Réparations"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesCura/SpecialModes.png",      "Modes spéciaux",    "Active des modes d’impression alternatifs (spiralize, coasting…).", x, y, btnSize, "Modes spéciaux"); x += btnSize + spacing;
-        creerBoutonOutil(modeNuit, panelOutils, "imagesCura/Experimental.png",      "Bêta/Expérimental", "Active les options expérimentales non finalisées.", x, y, btnSize, "Bêta/Expérimental");
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesCura/DualExtrusion.png",     "Multi-extrusion",   "Permet d’imprimer en plusieurs matériaux ou couleurs simultanément.", x, y, btnSize, "Multi-extrusion"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesCura/MeshFixes.png",         "Réparations",       "Corrige automatiquement les trous et intersections du modèle.", x, y, btnSize, "Réparations"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesCura/SpecialModes.png",      "Modes spéciaux",    "Active des modes d’impression alternatifs (spiralize, coasting…).", x, y, btnSize, "Modes spéciaux"); x += btnSize + spacing;
+        creerBoutonOutil(modeNuit, panelOutils, "/imagesCura/Experimental.png",      "Bêta/Expérimental", "Active les options expérimentales non finalisées.", x, y, btnSize, "Bêta/Expérimental");
         x = 50; y += (btnSize);
 
 
@@ -776,9 +800,19 @@ public class CuraPage extends PagePanel {
             UIManager.put("TabbedPane.focus", White);
         }
 
+        String textAppColor = boolModeNuit ? "#ffffff" : "#000000";
+        String bgAppColor = boolModeNuit ? "#212121" : "#ffffff";
+
+        // Applications (mis à jour)
+        textInstaller.setText(String.format(htmlInstallerCura, textAppColor, bgAppColor));
+        textInstaller.setCaretPosition(0);
+        scrollPanelColor(scrollInstaller, boolModeNuit);
+        scrollInstaller.getViewport().setOpaque(true);
+        scrollInstaller.getViewport().setBackground(boolModeNuit ? new Color(0x21, 0x21, 0x21) : White);
+        scrollInstaller.revalidate();
+        scrollInstaller.repaint();
 
         // Outils
-        panelOutils.setBackground(boolModeNuit ? InvertWhite : White);
         int idxOutils = onglets.indexOfTab("Outils");
         if (idxOutils != -1) {
             JScrollPane newOutils = createOngletOutils(getWidth(), getHeight(), boolModeNuit);
@@ -788,9 +822,7 @@ public class CuraPage extends PagePanel {
         }
 
         // Découverte
-        String textColor = boolModeNuit ? "#ffffff" : "#000000";
-        String bgColor = boolModeNuit ? "#212121" : "#ffffff";
-        text.setText(String.format(htmlDecouverte, textColor, bgColor));
+        text.setText(String.format(htmlDecouverte, textAppColor, bgAppColor));
         text.setCaretPosition(0);
         scrollPanelColor(scrollDecouverte, boolModeNuit);
         scrollDecouverte.getViewport().setOpaque(true);
@@ -799,8 +831,6 @@ public class CuraPage extends PagePanel {
         scrollDecouverte.repaint();
 
         // Applications (mis à jour)
-        String textAppColor = boolModeNuit ? "#ffffff" : "#000000";
-        String bgAppColor = boolModeNuit ? "#212121" : "#ffffff";
         textApplication.setText(String.format(htmlApplication, textAppColor, bgAppColor));
         textApplication.setCaretPosition(0);
         scrollPanelColor(scrollApplications, boolModeNuit);
@@ -810,10 +840,7 @@ public class CuraPage extends PagePanel {
         scrollApplications.repaint();
 
         // Vocabulaire
-        panelVocabulaire.setBackground(boolModeNuit ? new Color(0x21, 0x21, 0x21) : White);
-        String textVocabColor = boolModeNuit ? "#ffffff" : "#000000";
-        String bgVocabColor = boolModeNuit ? "#212121" : "#ffffff";
-        textVocabulaire.setText(String.format(htmlVocabulaire, textVocabColor, bgVocabColor));
+        textVocabulaire.setText(String.format(htmlVocabulaire, textAppColor, bgAppColor));
         textVocabulaire.setCaretPosition(0);
         scrollPanelColor(scrollVocabulaire, boolModeNuit);
         scrollVocabulaire.getViewport().setOpaque(true);

@@ -1,3 +1,5 @@
+package src;
+
 import javax.swing.*;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.plaf.basic.BasicScrollBarUI;
@@ -12,39 +14,38 @@ import java.net.URL;
 
 
 public class TutoPage extends PagePanel {
-    private Color Bleu = (new Color(10,210,210)), Noir = new Color(0,0,0), BleuFoncé = new Color(7,150,150), White = new Color(255, 255, 255), Rouge = new Color( 255, 100, 100);
-    private Color InvertBleu = (new Color(5,130,130)), InvertNoir = new Color(200, 200, 200), InvertBleuFoncé = new Color(14,200,200), InvertWhite = new Color(33, 33, 33), InvertRouge = new Color(255, 50, 50);
+    private Color Noir = new Color(0,0,0), White = new Color(255, 255, 255);
+    private Color InvertWhite = new Color(33, 33, 33);
     private JScrollPane scrollCube, scrollDes, scrollVaisseau;
     private JTabbedPane onglets;
     private JPanel panelCube, panelDes, panelVaisseau;
-    JButton buttonOutils;
-    JEditorPane text, textDes, textVaisseau, textVocabulaire;
+    JEditorPane text, textDes, textVaisseau;
     private final String htmlCube = """
 <html>
 <head>
   <style>
     body {
-      font-family: Arial;
-      font-size: 13px;
-      line-height: 1.6;
-      padding: 20px;
-      color: %s;            /* couleur du texte */
-      background-color: %s; /* couleur de fond */
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.6;
+        padding: 19px;
+        color: %s;            /* couleur du texte */
+        background-color: %s; /* couleur de fond */
     }
     h2 {
-      color: #2a7ae2;
+        color: #2a7ae2;
     }
     h3 {
-      color: #4a90e2;
-      margin-top: 30px;
+        margin-top: 30px;
+        color: #4a90e2;
     }
-    p.italic {
-      margin-top: 20px;
-      font-style: italic;
-      color: #666666;
+    img {
+        width: 500px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
     }
-    ul {
-      margin-left: 20px;
+    p {
+        margin-bottom: 10px;
     }
   </style>
 </head>
@@ -115,7 +116,7 @@ public class TutoPage extends PagePanel {
 <p style="text-align:right; margin-top:30px;">
   <a href="action:termine" style="
     display: inline-block;
-    padding: 10px 22px;
+    padding: 19px;
     font-weight: bold;
     color : 0099ff;
     font-size: 16px;
@@ -136,27 +137,27 @@ public class TutoPage extends PagePanel {
 <head>
   <style>
     body {
-      font-family: Arial;
-      font-size: 13px;
-      line-height: 1.6;
-      padding: 20px;
-      color: %s;
-      background-color: %s;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.6;
+        padding: 19px;
+        color: %s;            /* couleur du texte */
+        background-color: %s; /* couleur de fond */
     }
     h2 {
-      color: #2a7ae2;
+        color: #2a7ae2;
     }
     h3 {
-      color: #4a90e2;
-      margin-top: 30px;
+        margin-top: 30px;
+        color: #4a90e2;
     }
-    p.italic {
-      margin-top: 20px;
-      font-style: italic;
-      color: #666666;
+    img {
+        width: 500px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
     }
-    ul {
-      margin-left: 20px;
+    p {
+        margin-bottom: 10px;
     }
   </style>
 </head>
@@ -256,7 +257,7 @@ public class TutoPage extends PagePanel {
   <p style="text-align:right; margin-top:30px;">
   <a href="action:termine" style="
     display: inline-block;
-    padding: 10px 22px;
+    padding: 19px;
     font-weight: bold;
     color : 0099ff;
     font-size: 16px;
@@ -278,27 +279,27 @@ public class TutoPage extends PagePanel {
 <head>
   <style>
     body {
-      font-family: Arial;
-      font-size: 13px;
-      line-height: 1.6;
-      padding: 20px;
-      color: %s;            /* couleur du texte */
-      background-color: %s; /* couleur de fond */
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.6;
+        padding: 19px;
+        color: %s;            /* couleur du texte */
+        background-color: %s; /* couleur de fond */
     }
     h2 {
-      color: #2a7ae2;
+        color: #2a7ae2;
     }
     h3 {
-      color: #4a90e2;
-      margin-top: 30px;
+        margin-top: 30px;
+        color: #4a90e2;
     }
-    p.italic {
-      margin-top: 20px;
-      font-style: italic;
-      color: #666666;
+    img {
+        width: 500px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
     }
-    ul {
-      margin-left: 20px;
+    p {
+        margin-bottom: 10px;
     }
   </style>
 </head>
@@ -367,8 +368,6 @@ public class TutoPage extends PagePanel {
   <ul>
     <li>Cliquez sur <b>Symétrie miroir</b>.</li>
     <li>Sélectionnez l’option <b>Fonction</b>.</li>
-    <br>
-    <img src="Vaisseau/Fonction.png" alt="Symétrie de fonction" style="width:300px;">
     <li>Choisissez comme plan miroir celui utilisé pour le carré initial.</li>
     <br>
     <img src="Vaisseau/Miroir1.png" alt="Symétrie de fonction" style="width:300px;">
@@ -432,7 +431,7 @@ public class TutoPage extends PagePanel {
   <p style="text-align:right; margin-top:30px;">
     <a href="action:termine" style="
       display: inline-block;
-      padding: 10px 22px;
+      padding: 19px;
       font-weight: bold;
       color : 0099ff;
       font-size: 16px;
@@ -450,7 +449,7 @@ public class TutoPage extends PagePanel {
 """;
     
     private boolean flecheActive = false;
-    public TutoPage(int width, int height, CuraPage LaPageCura, MonAppImpression3D LaPageMain) {
+    public TutoPage(int width, int height, CuraPage LaPageCura, Main LaPageMain) {
         super("");
         setLayout(null);
 
@@ -503,12 +502,11 @@ public class TutoPage extends PagePanel {
 
 // 7. On définit la base (le dossier) où seront résolus tous les src relatifs si l'url est trouver
         URL base = null;
-        try {
-            base = new File("imagesTuto/").toURI().toURL();
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
+        base = getClass().getResource("/imagesTuto/");
+
+        if (base != null) {
+            doc.setBase(base);
         }
-        doc.setBase(base);
 
 // 8. On « colle » ce kit et ce document au JEditorPane
         text.setEditorKit(kit);
@@ -563,12 +561,11 @@ public class TutoPage extends PagePanel {
 
 // 7. On définit la base (le dossier) où seront résolus tous les src relatifs si l'url est trouver
         URL base = null;
-        try {
-            base = new File("imagesTuto/").toURI().toURL();
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
+        base = getClass().getResource("/imagesTuto/");
+
+        if (base != null) {
+            doc.setBase(base);
         }
-        doc.setBase(base);
 
 // 8. On « colle » ce kit et ce document au JEditorPane
         textDes.setEditorKit(kit);
@@ -605,7 +602,7 @@ public class TutoPage extends PagePanel {
         return panelDes;
     }
 
-    private JPanel createOngletVaisseau(CuraPage LaPageCura, MonAppImpression3D LaPageMain) {
+    private JPanel createOngletVaisseau(CuraPage LaPageCura, Main LaPageMain) {
         panelVaisseau = new JPanel();
         panelVaisseau.setLayout(new BorderLayout());
         panelVaisseau.setBackground(White);
@@ -623,12 +620,12 @@ public class TutoPage extends PagePanel {
 
 // 7. On définit la base (le dossier) où seront résolus tous les src relatifs si l'url est trouver
         URL base = null;
-        try {
-            base = new File("imagesTuto/").toURI().toURL();
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
+        base = getClass().getResource("/imagesTuto/");
+
+        if (base != null) {
+            doc.setBase(base);
         }
-        doc.setBase(base);
+
 
 // 8. On « colle » ce kit et ce document au JEditorPane
         textVaisseau.setEditorKit(kit);
