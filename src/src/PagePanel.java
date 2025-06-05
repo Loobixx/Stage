@@ -1,34 +1,11 @@
-package src;// === src.PagePanel.java ===
-import javax.swing.*;
-import java.awt.*;
+package src; // Définit le package auquel appartient cette classe
+
+import javax.swing.*; // Importation de Swing pour les composants graphiques
+import java.awt.*;    // Importation d’AWT pour les couleurs et autres outils graphiques
 
 public class PagePanel extends JPanel {
-    public JLabel titre;
-
-    public PagePanel(String titreTexte) {
-        setLayout(null);
-        setBackground(Color.WHITE);
-        titre = new JLabel(titreTexte);
-        titre.setFont(new Font("Arial", Font.BOLD, 24));
-        titre.setForeground(new Color(33, 33, 33)); // GRIS
-        add(titre);
+    public PagePanel() {
+        setLayout(null);         // Utilise un layout nul pour positionnement absolu des composants
+        setBackground(Color.WHITE); // Définit la couleur de fond du panneau en blanc
     }
-
-    public void positionTitre(int width, int height) {
-        Dimension size = titre.getPreferredSize();
-        titre.setBounds((width - size.width) / 2, height / 100 * 5, size.width, size.height);
-    }
-
-    public void modeNuitPage(boolean boolModeNuit) {
-        if (!boolModeNuit) {
-            titre.setForeground(Color.WHITE);
-            setBackground(Color.DARK_GRAY);
-            repaint(titre.getBounds());
-        } else {
-            titre.setForeground(new Color(33, 33, 33)); // Gris foncé
-            setBackground(Color.WHITE);
-        }
-    }
-
-
 }
